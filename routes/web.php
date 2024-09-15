@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookmarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/bookmark', function () {
+    return view('bookmark.index');
 });
 
-Route::get('/bookmark','App\Http\Controllers\bookmarkController@index');
+// Route::get('/home','App\Http\Controllers\BookmarkController@index')->name('home');
+// Route::get('/bookmark','App\Http\Controllers\BookmarkController@index');
+Route::get('/bookmark', [BookmarkController::class, 'index']);
+\Log::debug("aaaaaaaaa");

@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Bookmark;
 use Illuminate\Http\Request;
 
-class bookmarkController extends Controller
+class BookmarkController extends Controller
 {
     public function index()
     {
-        $bookmarks = bookmark::all();
+        $bookmarks = Bookmark::all();
 
-        return view('bookmark.index',['bookmark' => $bookmarks]);
+        return view('bookmark.index',['bookmarks' => $bookmarks]);
     }
 }
