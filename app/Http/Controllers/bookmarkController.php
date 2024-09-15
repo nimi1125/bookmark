@@ -9,6 +9,8 @@ class bookmarkController extends Controller
 {
     public function index()
     {
-        dd(bookmark::all());
+        $bookmarks = bookmark::all();
+
+        return view('bookmark.index',['bookmark' => $bookmarks]);
     }
 }
