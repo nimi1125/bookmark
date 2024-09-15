@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="contener">
-        <div class="col-md-12">
+        <div class="col-md-10 mx-auto">
             <div class="card">
                 <div class="card-header">ブックマーク一覧</div>
                 <div class="card-boby">
