@@ -10,7 +10,6 @@ class BookmarkController extends Controller
     public function index()
     {
         $bookmarks = Bookmark::all();
-
         return view('bookmark.index',['bookmarks' => $bookmarks]);
     }
 }
