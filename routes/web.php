@@ -18,7 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/home','App\Http\Controllers\BookmarkController@index')->name('home');
-// Route::get('/bookmark','App\Http\Controllers\BookmarkController@index');
 Route::get('/bookmark', [BookmarkController::class, 'index']);
-Route::get('bookmark/{id}', [BookmarkController::class, 'show'])->name('bookmark.show');
+// Route::get('bookmark/{id}', [BookmarkController::class, 'show'])->name('bookmark.show');
+// Route::post('bookmark/{id}', [BookmarkController::class, 'store'])->name('bookmark.show');
+
+Route::resource('bookmark', BookmarkController::class);
+

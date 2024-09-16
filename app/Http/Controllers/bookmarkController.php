@@ -13,6 +13,11 @@ class BookmarkController extends Controller
         return view('bookmark.index',['bookmarks' => $bookmarks]);
     }
 
+    public function create()
+    {
+        return view('bookmark.create');
+    }
+
     public function show($id)
     {
         $bookmark = Bookmark::findOrFail($id);
