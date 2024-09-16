@@ -14,8 +14,8 @@ use App\Http\Controllers\BookmarkController;
 |
 */
 
-Route::get('/bookmark', function () {
-    return view('bookmark.index');
+Route::get('/', function () {
+    return view('welcome');
 });
 
 // Route::get('/home','App\Http\Controllers\BookmarkController@index')->name('home');
