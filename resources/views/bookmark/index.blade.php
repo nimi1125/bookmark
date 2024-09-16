@@ -1,25 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="contener">
-        <div class="col-md-10 mx-auto">
-            <div class="card">
-                <div class="card-header">ブックマーク一覧</div>
-                <div class="card-boby">
-                    <table class="table">
-                        <thead>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">ブックマーク一覧</div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>タイトル</th>
                             </tr>
+                            </thead>
                             @foreach($bookmarks as $bookmark)
-                            <tr>
-                                <th>{{ $bookmark->id }}</th>
-                                <th>{{ $bookmark->title }}</th>
-                            </tr>
+                                <tr>
+                                    <td>{{ $bookmark->id }}</td>
+                                    <td><a href="{{ route('bookmarks.show', $bookmark) }}">{{ $bookmark->title }}</a></td>
+                                </tr>
                             @endforeach
-                        </thead>
-                    </table>
+                        </table>
+                        {{ $bookmarks->links() }}
+                    </div>
                 </div>
             </div>
         </div>

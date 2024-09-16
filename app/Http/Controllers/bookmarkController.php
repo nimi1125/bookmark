@@ -14,8 +14,8 @@ class BookmarkController extends Controller
      */
     public function index()
     {
-        $bookmarks = Bookmark::paginate(20);
-        return view('bookmarks.index', compact('bookmarks'));
+        $Bookmarks = Bookmark::paginate(20);
+        return view('bookmark.index',['bookmark' => $bookmarks]);
     }
 
     /**
@@ -45,9 +45,10 @@ class BookmarkController extends Controller
      * @param  \App\Models\Bookmark  $bookmark
      * @return \Illuminate\Http\Response
      */
-    public function show(Bookmark $bookmark)
+    public function show($id)
     {
-        return view('bookmarks.show', compact('bookmark'));
+        $Bookmarks = Bookmark::FindOrFail($id);
+        return view('bookmark.show',compact('$Bookmark'));
     }
 
     /**

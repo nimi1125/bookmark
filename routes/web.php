@@ -21,4 +21,4 @@ Route::get('/', function () {
 // Route::get('/home','App\Http\Controllers\BookmarkController@index')->name('home');
 // Route::get('/bookmark','App\Http\Controllers\BookmarkController@index');
 Route::get('/bookmark', [BookmarkController::class, 'index']);
-Route::get('/bookmark/{id}', 'BookmarkController@show')->where('id','[0-9]');
+Route::get('/bookmark/{bookmark}', [BookmarkController::class, 'show'])->name('bookmarks.show');
