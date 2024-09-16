@@ -18,6 +18,18 @@ class BookmarkController extends Controller
         return view('bookmark.create');
     }
 
+    public function store(Request $request)
+    {
+            // バリデーション
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'url' => 'required|url|max:255',
+            'description' => 'required|string',
+        ]);
+        Bookmark::create($validated);
+        return redirect()->route('bookmarks.index')->with('success', 'ブックマークが作成されました。');
+    }
+
     public function show($id)
     {
         $bookmark = Bookmark::findOrFail($id);

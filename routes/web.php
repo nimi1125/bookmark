@@ -23,4 +23,3 @@ Route::get('/bookmark', [BookmarkController::class, 'index']);
 // Route::post('bookmark/{id}', [BookmarkController::class, 'store'])->name('bookmark.show');
 
 Route::resource('bookmark', BookmarkController::class);
-
