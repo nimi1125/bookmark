@@ -14,11 +14,15 @@
                             <tr>
                                 <th>ID</th>
                                 <th>タイトル</th>
+                                <th>詳細</th>
+                                <th>アクション</th>
                             </tr>
                             @foreach($bookmarks as $bookmark)
                             <tr>
                                 <th>{{ $bookmark->id }}</th>
-                                <th><a href="{{ route('bookmark.show', $bookmark->id) }}">{{ $bookmark->title }}</a></th>
+                                <td><a href="{{ $bookmark->url }}">{{ $bookmark->title }}</a></td>
+                                <th><a href="{{ route('bookmark.show', $bookmark->id) }}">表示</a></th>
+                                <th><a href="{{ route('bookmark.edit', $bookmark->id) }}" class="btn btn-primary">編集</a></th>
                             </tr>
                             @endforeach
                         </thead>
