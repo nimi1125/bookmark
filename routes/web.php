@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookmarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bookmark', [BookmarkController::class, 'index']);
-// Route::get('bookmark/{id}', [BookmarkController::class, 'show'])->name('bookmark.show');
-// Route::post('bookmark/{id}', [BookmarkController::class, 'store'])->name('bookmark.show');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::resource('bookmark', BookmarkController::class);
+require __DIR__.'/auth.php';

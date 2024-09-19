@@ -24,8 +24,9 @@ class BookmarkRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'url' => 'required',
+            'title' => 'required|max:100',
+            'url' => 'required|max:100|url',
+            'description' => 'max:500',
         ];
     }
 }
