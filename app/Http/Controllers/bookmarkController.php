@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bookmark;
-use Illuminate\Http\Request;
+use App\Http\Requests\BookmarkRequest;
 
 class BookmarkController extends Controller
 {
@@ -18,7 +18,7 @@ class BookmarkController extends Controller
         return view('bookmark.create');
     }
 
-    public function store(Request $request)
+    public function store(BookmarkRequest $request)
     {
         Bookmark::create($request->all());
         return redirect()
@@ -38,7 +38,7 @@ class BookmarkController extends Controller
         return view('bookmark.edit',compact('bookmark'));
     }
 
-    public function update(Request $request, Bookmark $bookmark)
+    public function update(BookmarkRequest $request, Bookmark $bookmark)
     {
         $bookmark->update($request->all());
         return redirect()
