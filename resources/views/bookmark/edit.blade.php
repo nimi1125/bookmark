@@ -10,7 +10,7 @@
                         <form method="POST" action="{{ route('bookmark.update', $bookmark) }}">
                             @method('PUT')
                             @csrf
-                            @include('bookmark.fields')
+                            @include('bookmark.bookmarksfields')
                         </form>
                     </div>
                 </div>

@@ -21,7 +21,9 @@ class BookmarkController extends Controller
     public function store(Request $request)
     {
         Bookmark::create($request->all());
-        return redirect()->route('bookmark.index');
+        return redirect()
+            ->route('bookmark.index')
+            ->with('status','ブックマークを追加しました。');
     }
 
     public function show($id)
@@ -30,15 +32,27 @@ class BookmarkController extends Controller
         return view('bookmark.show', compact('bookmark'));
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('bookmark.edit');
+        $bookmark = Bookmark::findOrFail($id);
+        return view('bookmark.edit',compact('bookmark'));
     }
 
     public function update(Request $request, Bookmark $bookmark)
     {
         $bookmark->update($request->all());
-        return redirect()->route('bookmark.edit', $bookmark);
+        return redirect()
+        ->route('bookmark.index')
+        ->with('status','ブックマークを編集しました。');
+    }
+
+    public function destroy($id)
+    {
+        $bookmark = Bookmark::findOrFail($id);
+        $bookmark->delete();
+        return redirect()
+            ->route('bookmark.index')
+            ->with('status','ブックマークを削除しました。');
     }
 }
 

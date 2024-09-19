@@ -9,20 +9,29 @@
                     <div class="mt-3 ml-3 mb-3">
                         <a href="{{ route('bookmark.create') }}" class="btn btn-primary">新規登録</a>
                     </div>
+                    @include('components.alert')
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>タイトル</th>
-                                <th>詳細</th>
                                 <th>アクション</th>
                             </tr>
                             @foreach($bookmarks as $bookmark)
                             <tr>
                                 <th>{{ $bookmark->id }}</th>
                                 <td><a href="{{ $bookmark->url }}">{{ $bookmark->title }}</a></td>
-                                <th><a href="{{ route('bookmark.show', $bookmark->id) }}">表示</a></th>
-                                <th><a href="{{ route('bookmark.edit', $bookmark->id) }}" class="btn btn-primary">編集</a></th>
+                                <th>
+                                    <div class="d-flex">
+                                        <a href="{{ route('bookmark.show', $bookmark->id) }}" class="btn btn-secondary">表示</a>
+                                        <a href="{{ route('bookmark.edit', $bookmark->id) }}" class="btn btn-light boder">編集</a>
+                                        <form method="POST" action="{{ route('bookmark.destroy',$bookmark) }}">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-dark" onclick="return confirm('本当に削除しますか？')">削除</button>
+                                        </form>
+                                    </div>
+                                </th>
                             </tr>
                             @endforeach
                         </thead>
